@@ -1,4 +1,3 @@
- js
 // Элементы управления
 const authTitle = document.getElementById('auth-title');
 const submitBtn = document.getElementById('submit-btn');
@@ -6,9 +5,51 @@ const toggleLink = document.getElementById('toggle-auth');
 const usernameContainer = document.getElementById('username-container');
 const confirmContainer = document.getElementById('confirm-container');
 const emailContainer = document.getElementById('email-container');
+const forgotPassword = document.getElementById('forgot-password');
 
 // Состояние формы
 let isSignUpMode = false;
+
+// Переключение видимости пароля
+document.getElementById('toggle-password').addEventListener('click', function() {
+    const passwordInput = document.getElementById('password');
+    const icon = this.querySelector('i');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
+    }
+});
+
+// Переключение видимости подтверждения пароля
+document.getElementById('toggle-confirm').addEventListener('click', function() {
+    const confirmInput = document.getElementById('confirm-password');
+    const icon = this.querySelector('i');
+
+    if (confirmInput.type === 'password') {
+        confirmInput.type = 'text';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
+    } else {
+        confirmInput.type = 'password';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
+    }
+});
+
+// Обработчик восстановления пароля
+document.getElementById('forgot-link').addEventListener('click', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+
+    if (!email) {
+        alert('Please enter your email to reset your password.');
+        return;
+    }
+
+    alert(`Password reset instructions have been sent to ${email}.`);
+});
 
 // Обработчик переключения режима
 toggleLink.addEventListener('click', function(e) {
@@ -20,6 +61,7 @@ toggleLink.addEventListener('click', function(e) {
         authTitle.textContent = 'Join Us!';
         submitBtn.textContent = 'Sign Up';
         toggleLink.textContent = 'Already have an account? Sign In';
+        forgotPassword.style.display = 'none';
 
         // Показываем дополнительные поля
         usernameContainer.style.display = 'block';
@@ -42,6 +84,7 @@ toggleLink.addEventListener('click', function(e) {
         authTitle.textContent = 'Let\'s Start!';
         submitBtn.textContent = 'Sign In';
         toggleLink.textContent = 'Don\'t have an account? Sign Up';
+        forgotPassword.style.display = 'block';
 
         // Скрываем дополнительные поля с анимацией
         [usernameContainer, confirmContainer].forEach(el => {

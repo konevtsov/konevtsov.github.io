@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plep.me</title>
+    <title>Plep.me - Share Your Moments</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>📸</text></svg>">
 </head>
 <body>
-    <h1>Plep.me</h1>
+    <div class="logo-container">
+        <div class="logo">📸</div>
+        <h1>Plep.me</h1>
+    </div>
     <h2>Create and share content anywhere</h2>
+    <p class="description">Share moments, follow friends and discover the world. Your new visual social network.</p>
 
     <!-- Секция авторизации/регистрации -->
     <section id="auth" class="card">
@@ -17,7 +22,7 @@
         <form id="auth-form">
             <div class="input-container" id="email-container">
                 <label for="email">Email:</label>
-                <input id="email" type="email" placeholder="Your email" required>
+                <input id="email" type="email" placeholder="your.email@example.com" required>
             </div>
 
             <div class="input-container" id="username-container" style="display: none;">
@@ -27,12 +32,22 @@
 
             <div class="input-container">
                 <label for="password">Password:</label>
-                <input id="password" type="password" placeholder="Your password" required>
+                <div class="password-wrapper">
+                    <input id="password" type="password" placeholder="Your password" required>
+                    <span class="password-toggle" id="toggle-password"><i class="far fa-eye"></i></span>
+                </div>
             </div>
 
             <div class="input-container" id="confirm-container" style="display: none;">
                 <label for="confirm-password">Confirm Password:</label>
-                <input id="confirm-password" type="password" placeholder="Confirm your password">
+                <div class="password-wrapper">
+                    <input id="confirm-password" type="password" placeholder="Confirm your password">
+                    <span class="password-toggle" id="toggle-confirm"><i class="far fa-eye"></i></span>
+                </div>
+            </div>
+
+            <div id="forgot-password">
+                <a href="#" id="forgot-link">Forgot password?</a>
             </div>
 
             <button type="button" class="auth-btn" id="submit-btn">Sign In</button>
@@ -43,6 +58,9 @@
     <!-- Совмещенная секция информации и соцсетей -->
     <section id="moreinfo" class="card">
         <p>More about us:</p>
+        <div class="service-description">
+            Plep.me helps you share photos and videos with friends, discover new content, and connect with communities worldwide.
+        </div>
         <div id="social-links">
             <a href="https://t.me/plepme_bot" target="_blank" class="social-icon" aria-label="Telegram">
                 <i class="fab fa-telegram"></i>
